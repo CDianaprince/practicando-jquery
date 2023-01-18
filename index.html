@@ -4,40 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Template</title>
+    <title>Simon Says Game</title>
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   </head>
+
   <body>
-    <div id="container-p">
-      <header id="header">
-        <img id="logo">
-        <nav id="nav">
-        <a id = "active" class = "link" href=""></a>
-        <a class = "link" href=""></a>
-        <a class = "link" href=""></a>
-        </nav>
-      </header>
-      <main id="main">
-        <section id="section1">
-          <div id ="div1-sec1">
-            <div id ="div1-1-sec1">
+    <h1 id="level-title">Press A Key to Start</h1>
 
-            </div>
-          </div>
-        </section>
-        <section id="section2">
-          <div id ="div1-sec2">
-            <div id ="div1-1-sec2">
+    <section id="container">
+      <div class="container_row">
+        <div type="button" id="green" class="container__row__btn container__row__btn--green"></div>
+        <div type="button" id="red" class="container__row__btn container__row__btn--red"></div>
+      </div>
+      <div class="container_row">
+        <div type="button" id="yellow" class="container__row__btn container__row__btn--yellow"></div>
+        <div type="button" id="blue" class="container__row__btn container__row__btn--blue"></div>
+      </div>
+    </section>
 
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer id="footer">
-        <div id="footer-div1"></div>
-      </footer>
-    </div>
-    
     <script type="module" src="/js/main.js"></script>
   </body>
 </html>
