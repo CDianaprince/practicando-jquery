@@ -27,7 +27,7 @@ $('.container__row__btn').click(function() { let userColor = $(this).attr('id');
   playSound(userColor);
 
   animateClick(userColor);
-
+  checkAnswer(gameClicksP.length - 1);
 });
 
 
@@ -60,12 +60,23 @@ function nextSequence () {
 function checkAnswer(currentLevel) {
   if(gameP[currentLevel] === gameClicksP[currentLevel]) {
     if(gameP.length === gameClicksP) {
-      setTimeout(() => {nextSequence();}, 100);
+      setTimeout(() => {nextSequence();
+      }, 100);
     }
 
   } else {
     //Mostrar sonido de error
-    playSound('wrong')
+    playSound('wrong');
+    //clase para finalizar el juego
+    $('body').addClass('game-over');
+
+    //cambiar titulo para poder reiniciarlo
+    $('#level-title').text('Game Over, please restart!');
+
+    //quitar la clases agregadas
+    setTimeout(() => {
+      $('body').removeClass('game-over');
+    }, 400);
   }
 }
 
