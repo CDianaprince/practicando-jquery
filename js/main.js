@@ -77,6 +77,8 @@ function checkAnswer(currentLevel) {
     setTimeout(() => {
       $('body').removeClass('game-over');
     }, 400);
+    //llamar  funcion para reiniciar el juego
+    startOver();
   }
 }
 
@@ -93,4 +95,11 @@ function animateClick(userColor) {
     setTimeout(() =>{ 
       $('#' + userColor).removeClass('pressed');
   }, 100);
+}
+
+//funcion para reiniciar el juego
+function startOver() {
+  level = 0;
+  gameP = [];
+  start = false;
 }
