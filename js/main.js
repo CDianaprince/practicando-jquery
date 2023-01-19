@@ -21,6 +21,16 @@ $(document).keydown(() => {
   
 });
 
+//Evento al que el usuario le esta dando click
+$('.container__row__btn').click(function() { let userColor = $(this).attr('id');
+  gameClicksP.push(userColor);
+  playSound(userColor);
+
+  animateClick(userColor);
+
+});
+
+
 //Funcion para crear la secuencia del juego
 function nextSequence () {
   //Reiniciar los Clicls
@@ -50,4 +60,13 @@ function nextSequence () {
 function playSound(color) {
   let audio = new Audio('../assets/sounds/' + color + '.mp3');
   audio.play();
+}
+//Funcion para animar el click
+function animateClick(userColor) {
+  $('#' + userColor).addClass('pressed');
+
+  //quitar la clase agregada
+    setTimeout(() =>{ 
+      $('#' + userColor).removeClass('pressed');
+  }, 100);
 }
