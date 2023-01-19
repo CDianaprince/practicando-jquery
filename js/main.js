@@ -44,12 +44,12 @@ function nextSequence () {
   let randomNumber = Math.random()*4;
   randomNumber = Math.floor(randomNumber);
 
-  //Almacenar el numero en el patron
-  gameP.push(randomNumber);
-
   //Usar numero aleatorio para llamar el boton seleccionado
   let randomColor;
   randomColor = colors[randomNumber];
+
+  //Almacenar el numero en el patron
+  gameP.push(randomColor);
 
   $('#' + randomColor).fadeIn(100).fadeOut(100).fadeIn(100);
 
@@ -59,9 +59,10 @@ function nextSequence () {
 //Funcion para confirmar los clicks del usuario
 function checkAnswer(currentLevel) {
   if(gameP[currentLevel] === gameClicksP[currentLevel]) {
-    if(gameP.length === gameClicksP) {
+    if(gameP.length === gameClicksP
+      .length) {
       setTimeout(() => {nextSequence();
-      }, 100);
+      }, 1000);
     }
 
   } else {
