@@ -42,10 +42,12 @@ function nextSequence () {
   randomColor = colors[randomNumber];
 
   $('#' + randomColor).fadeIn(100).fadeOut(100).fadeIn(100);
+
+  playSound(randomColor);
 }
 
 //Funcion para emular sonidos
 function playSound(color) {
-  let audio = new Audio('./assets/sounds/' + color + '.mp3');
+  let audio = new Audio('../assets/sounds/' + color + '.mp3');
   audio.play();
 }
