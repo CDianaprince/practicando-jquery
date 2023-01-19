@@ -56,6 +56,19 @@ function nextSequence () {
   playSound(randomColor);
 }
 
+//Funcion para confirmar los clicks del usuario
+function checkAnswer(currentLevel) {
+  if(gameP[currentLevel] === gameClicksP[currentLevel]) {
+    if(gameP.length === gameClicksP) {
+      setTimeout(() => {nextSequence();}, 100);
+    }
+
+  } else {
+    //Mostrar sonido de error
+    playSound('wrong')
+  }
+}
+
 //Funcion para emular sonidos
 function playSound(color) {
   let audio = new Audio('../assets/sounds/' + color + '.mp3');
