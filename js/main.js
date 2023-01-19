@@ -1,23 +1,51 @@
 import '../assets/style/style.scss';
-import javascriptLogo from '../assets/logos/JavaScript.svg';
-import { setupCounter } from './module/counter.js';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+//Arreglo que almacene los colores 
+let colors = ['red', 'blue', 'green', 'yellow'];
+//patron del juego
+let gameP =[];
+//patron de clicks
+let gameClicksP = [];
 
-setupCounter(document.querySelector('#counter'))
+//Funcion para iniciar el juego
+let start = false;
+let level = 0;
+
+//evento para que registre una tecla que inicie el juego
+$(document).keydown(() => {
+  if(!start) {
+    $('#level-title').text('Level' + level);
+    start = true;
+    nextSequence()
+  }
+  
+});
+
+//Funcion para crear la secuencia del juego
+function nextSequence () {
+  //Reiniciar los Clicls
+  gameClicksP = [];
+
+  //actualizar el nivel
+  level++;
+  $('#level-title').text('level' + level);
+
+  //Numero Aleatorio para patron
+  let randomNumber = Math.random()*4;
+  randomNumber = Math.floor(randomNumber);
+
+  //Almacenar el numero en el patron
+  gameP.push(randomNumber);
+
+  //Usar numero aleatorio para llamar el boton seleccionado
+  let randomColor;
+  randomColor = colors[randomNumber];
+
+  $('#' + randomColor).fadeIn(100).fadeOut(100).fadeIn(100);
+}
+
+//Funcion para emular sonidos
+function playSound(color) {
+  let audio = new Audio('./assets/sounds/' + color + '.mp3');
+  audio.play();
+}
